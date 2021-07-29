@@ -1,0 +1,32 @@
+create table user(
+     user_id int(20),
+     user_name varchar(30),
+     user_email varchar(30),
+     user_password varchar(20),
+     PRIMARY KEY(user_id)
+     );
+
+insert into user (user_id,user_name,user_email,user_password) values (100,'Sam','sam@mail','password');
+
+insert into user (user_id,user_name,user_email,user_password) values (101,'Paul','p@mail','password88');
+
+insert into user (user_id,user_name,user_email,user_password) values (102,'Brian','b@mail','nopasswrd');
+
+insert into user (user_id,user_name,user_email,user_password) values (103,'Smith','smith@mail','strongpass');
+
+
+
+create table playlist( 
+	playlist_id int(20),playlist_name varchar(30),
+	primary key (playlist_id),user_id int, foreign key(user_id) references user(user_id) 
+);
+
+insert into playlist(playlist_id,playlist_name,user_id) values (202,'Pop',101);
+
+insert into playlist(playlist_id,playlist_name,user_id) values (203,'Rock',100);
+
+insert into playlist(playlist_id,playlist_name,user_id) values (200,'Jazz',102);
+
+insert into playlist(playlist_id,playlist_name,user_id) values (201,'Rock',103);
+
+select user.user_id, playlist.playlist_id from user inner join playlist on user.user_id = playlist.user_id;
