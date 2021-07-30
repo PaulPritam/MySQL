@@ -1,0 +1,8 @@
+//Command to download data from MYSql client
+
+	select id,name,sale,salary
+	into outfile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/download.csv'
+	fields terminated by ','
+	optionally enclosed by '"'
+	lines terminated by '\n'
+	from sample;
