@@ -1,0 +1,34 @@
+show schemas;
+create database Demo;
+use Demo;
+create table operation(
+sno int(10),
+animal varchar(30),
+span int(20),
+animal_type varchar(20)
+);
+insert into operation(sno,animal,span,animal_type) values (1,'Cat',25,'carnivorous');
+insert into operation(sno,animal,span,animal_type) values (2,'Dog',30,'carnivorous');
+insert into operation(sno,animal,span,animal_type) values (3,'Cow',15,'herbivorous');
+insert into operation(sno,animal,span,animal_type) values (4,'Lion',30,'carnivorous');
+insert into operation(sno,animal,span,animal_type) values (5,'Rabbit',15,'Herbivorous');
+insert into operation(sno,animal,span,animal_type) values (6,'Bear',30,'omnnivorous');
+
+desc operation;
+select * from operation;
+
+/*Nested queries*/
+select animal,span from operation where span in (select span 
+from operation where span = 15);
+
+/*basic query*/
+select span,animal, animal_type from operation where span > 15 and animal_type = 
+'carnivorous';
+
+/*Finding the largest data*/
+select * from operation where span = (select max(span) from 
+operation);
+
+/*Nesting the above query to find out the second largest datas*/
+select animal, max(span) from operation 
+where span < (select max(span) from operation);
