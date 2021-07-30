@@ -1,0 +1,9 @@
+//Command to upload data to MYSql client     
+
+	load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/upload.csv'
+     	into table Upload
+     	fields terminated by ','
+     	enclosed by ""
+     	lines terminated by '\n'
+     	ignore 1 rows;
+
